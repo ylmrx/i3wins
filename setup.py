@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="i3wins",
-    version="0.0.1",
+    version="0.0.2",
     author="Yoann Lamouroux",
     author_email="ylamouroux@ubuntu.com",
     description="Yet another i3 window switcher",
