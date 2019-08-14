@@ -4,7 +4,7 @@ from shlex import split
 import collections
 import sys
 
-def main(rofi_args=[]):
+def main(rofi_args=sys.argv[1:]):
     command_line = "rofi -dmenu -markup-rows -p '> '"
     i3 = i3ipc.Connection()
     pink = "w{} d{:<4} |<span color='pink'> {}</span>"
@@ -26,4 +26,4 @@ def main(rofi_args=[]):
     f.command('focus')
     
 if __name__ == '__main__':
-    main(rofi_args=sys.argv[1:])
+    main()
