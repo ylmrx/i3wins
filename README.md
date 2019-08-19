@@ -1,10 +1,12 @@
-# i3wins
+# i3wins/i3lasts
 
 As the name might suggest, this is a wrapper to rofi acting as a window-switcher.
 
 I found `-show window` option to be quite slow, and would often get in the way. On another topic, I use i3 in an XFCE environment (for the PM and such)… and the virtual desktops would conflicts, and be generally weird.
 
 i3wins is fast and won't get in the way.
+
+i3lasts is also a window-switcher, but it keeps track of your focused windows through time. It's insanely effective if you go back and forth a lot. It comes as a server (which need to be running at all time) / client as i3 won't keep track of those.
 
 # Pre-requisites
 
@@ -38,9 +40,18 @@ Check rofi manpage.
 
 Here's a snippet from my i3 config:
 
+## i3wins
+
 ```
-bindsym Mod1+space exec "/home/fuzzy/.local/share/virtualenvs/i3switch/bin/i3wins -kb-row-down 'Down,Control+n,Alt+space,space' -kb-accept-entry '!Alt+space,!Alt_L,!Alt+Alt_L,Return'"
 bindsym Mod1+Tab exec "/home/fuzzy/.local/share/virtualenvs/i3switch/bin/i3wins -kb-row-down 'Down,Control+n,Alt+Tab' -kb-accept-entry '!Alt+Tab,!Alt_L,!Alt+Alt_L,Return'"
+```
+
+## i3lasts
+
+```
+bindsym Mod1+space exec "/home/fuzzy/.local/share/virtualenvs/i3switch/bin/i3lastc"
+[...]
+exec --no-startup-id "/home/fuzzy/.local/share/virtualenvs/i3switch/bin/i3lasts -kb-row-down 'Down,Control+n,Alt+space,space' -kb-accept-entry '!Alt+space,!Alt_L,!Alt+Alt_L,Return'"
 ```
 
 Feel free to use it as-is. Or modify it into oblivion.
@@ -50,6 +61,8 @@ Feel free to use it as-is. Or modify it into oblivion.
 Long story made short :
 - Faster mode : Hold Alt, then press Tab as many times as needed, when you're where you want : release Tab *then* Alt.
 - Not so fast : Hold Alt, then press Tab and release Alt while still holding Tab : the window will stay there, you can search text, scroll, validate with a single press on Alt, or the good'ol Enter key
+
+(the spacebar has the same behavior)
 
 You'll get used to it.
 
@@ -74,5 +87,9 @@ Colors are hardcoded and were set by yours truly for ecstatic co-workers' high-f
 
 # Todo
 
-Handles URGENCY, Fullscreen, vim-marks and more i3-specific concepts (tree depth for examples).
+- Handles URGENCY,
+- tags Fullscreen windows as such,
+- deal with vim-marks and more i3-specific concepts (tree depth for examples).
+- show current desktop windows in the right order (they are in reverse currently)
+- Support for rofi 1.5.4 (allows icons in dmenu mode)
 

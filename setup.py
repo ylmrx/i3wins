@@ -21,7 +21,9 @@ setuptools.setup(
     install_requires=['i3ipc', 'dynmen', 'traitlets'],
     entry_points={
         'console_scripts': [
-            'i3wins=i3wins.i3wins:main'
+            'i3wins=i3wins.i3wins:main',
+            'i3lasts=i3wins.i3lasts:server',
+            'i3lastc=i3wins.i3lasts:client'
         ]
     }
 )
